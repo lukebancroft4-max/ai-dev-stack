@@ -2,34 +2,49 @@
 
 Personal toolkit for AI-assisted development, app building, and research.
 
-## What's inside
+## Windows — brand new PC (no Git yet)
 
-- `setup/` — one-command install scripts for a new PC (Windows, macOS, Linux)
-- `stack/` — recommended tools and versions for AI dev, web dev, and research
-- `prompts/` — reusable prompt templates for coding, research, and debugging
-- `scripts/` — helper scripts (git config, env setup, project scaffolding)
+You will see `git is not recognized`. That is normal. Do this in PowerShell:
 
-## Quick start (new PC)
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+irm https://raw.githubusercontent.com/lukebancroft4-max/ai-dev-stack/main/setup/bootstrap.ps1 | iex
+```
+
+That one command installs Git and the rest of the stack, then clones this repo into `%USERPROFILE%\ai-dev-stack`.
+
+If PowerShell blocks the download, install Git first, then clone:
+
+```powershell
+winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
+```
+
+Close PowerShell, open a **new** window, then:
+
+```powershell
+git clone https://github.com/lukebancroft4-max/ai-dev-stack.git
+cd ai-dev-stack
+.\setup\install.bat
+```
+
+## Linux / macOS
 
 ```bash
 git clone https://github.com/lukebancroft4-max/ai-dev-stack.git
 cd ai-dev-stack
-./setup/install.sh        # Linux/macOS
-# or
-setup\install.bat        # Windows
+chmod +x setup/install.sh
+./setup/install.sh
 ```
 
-## Stack overview
+## After install
 
-| Layer | Tools |
-|---|---|
-| AI coding | Claude Code, Cursor, GitHub Copilot, Aider |
-| Local models | Ollama, LM Studio |
-| Web dev | Node.js 22, Python 3.12, pnpm, Docker |
-| Research | JupyterLab, VS Code + Python/Jupyter extensions |
-| Version control | Git, GitHub CLI |
+1. Copy `.env.example` to `.env` and add API keys.
+2. `ollama pull llama3.2`
+3. Open VS Code and install extensions listed in `stack/vscode-extensions.txt`.
 
-## Notes
+## What's inside
 
-- Edit `stack/versions.md` to pin your preferred versions.
-- Add your API keys to `.env.example` (never commit real keys).
+- `setup/` — installers and a Windows bootstrap that works before Git exists
+- `stack/` — recommended tools and versions
+- `prompts/` — reusable prompt templates
+- `scripts/` — project scaffolding
