@@ -1,0 +1,14 @@
+# VS Code extensions for AI dev + research
+# Install all: cat stack/vscode-extensions.txt | xargs -L1 code --install-extension
+
+ms-python.python
+ms-tools.vscode-docker
+ms-azuretools.vscode-docker
+GitHub.copilot
+GitHub.copilot-chat
+anthropic.claude-code
+ms-toolsai.jupyter
+formulahendry.code-runner
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+bradlc.vscode-tailwindcss
